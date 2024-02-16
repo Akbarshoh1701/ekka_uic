@@ -146,9 +146,9 @@
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="{% static 'assets/images/product-image/6_1.jpg' %}" alt="Product" />
+                                                        src="{{ i.images.first.image.url }}" alt="Product" />
                                                     <img class="hover-image"
-                                                        src="{% static 'assets/images/product-image/6_2.jpg' %}" alt="Product" />
+                                                        src="{{ i.images.first.image.url }}" alt="Product" />
                                                 </a>
                                                 <span class="percentage">20%</span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
@@ -246,10 +246,12 @@
                                 <div class="ec-sb-block-content">
                                     <ul>
                                         <li>
+
                                             <div class="ec-sidebar-block-item">
                                                 <input type="checkbox" checked /> <a href="#">clothes</a><span
                                                     class="checked"></span>
                                             </div>
+
                                         </li>
                                         <li>
                                             <div class="ec-sidebar-block-item">
