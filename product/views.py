@@ -1,28 +1,31 @@
 from django.shortcuts import render
-from django.views.generic import View
-
-from product.models import Product, Size, Category, Color, ProductImage
-
-
-# Create your views here.
+from django.views import View
+from product.forms import CommentForm
+from product.models import Product, Category, Size, Color
 
 
-class ShopListView(View):
-    def get(self, request, *args, **kwargs):
+class ProductView(View):
+    def get(self, request):
         context = {
-            "product_ls": Product.objects.all(),
-            "size_ls": Size.objects.all(),
-            "categories": Category.objects.all(),
-            "color": Color.objects.all(),
-            "product_image": ProductImage.all()
+            'product': Product.objects.all(),
+            'category': Category.objects.all(),
+            'size': Size.objects.all(),
+            'color': Color.objects.all(),
         }
         return render(request, 'product_list.html', context)
 
-class ShopDetailView(View):
-    def get(self, request, pk, *args, **kwargs):
-        product = Product.objects.get(id=pk)
+
+class ProductDetailView(View):
+    def get(self, request, slug):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            form = CommentForm()
         context = {
-            'product': product
+            'product': Product.objects.get(slug=slug)
         }
         return render(request, 'product-details.html', context)
+
+
 

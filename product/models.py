@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
+from colorfield.fields import ColorField
 from django.utils.translation import gettext_lazy as _
 import string
 import random
@@ -31,6 +32,7 @@ class Color(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='colors')
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
+    colors = ColorField()
 
     def __str__(self):
         return self.title
@@ -97,3 +99,16 @@ class Currency(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Commit(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    email = models.EmailField(null=True, blank=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
+"""'product', 'name', 'email', 'text"""

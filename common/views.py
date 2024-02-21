@@ -10,4 +10,8 @@ from product.models import Product
 class IndexView(TemplateView):
     template_name = 'index.html'
 
+# def sorch_view(request):
+#     sorch = request.GET.get('sorch')
+#     if q:
+#
 

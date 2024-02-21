@@ -43,11 +43,13 @@ INSTALLED_APPS = [
 THIRD_PARTY_APPS = [
     "modeltranslation",
     'jazzmin',
+    'colorfield',
 ]
 
 LOCAL_APPS = [
     'product',
-    'common'
+    'common',
+    'order'
 ]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + INSTALLED_APPS + LOCAL_APPS
